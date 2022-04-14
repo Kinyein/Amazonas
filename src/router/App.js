@@ -1,12 +1,13 @@
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
-import { LoadingPage } from '../components/LoadingPage'
 import Login from '../components/Login'
 import Register from '../components/Register'
+import { ContainerLoadingPage, SpinnerLoading } from '../styles/loadingPageStyle'
 import DashBoardRoutes from './DashBoardRoutes'
 import PrivateRoutes from './PrivateRoutes'
 import PublicRoutes from './PublicRoutes'
+import logo from '../img/logoamazonas.png'
 
 const App = () => {
 
@@ -27,7 +28,15 @@ const App = () => {
 
   if (checking) {
     return (
-      <LoadingPage/>
+      <ContainerLoadingPage>
+      <div>
+        <h1>AMAZONAS</h1>
+        <img src={logo} alt='' />
+      </div>
+
+      <SpinnerLoading></SpinnerLoading>
+      
+    </ContainerLoadingPage>
     )
   }
 
