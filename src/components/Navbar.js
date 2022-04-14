@@ -1,11 +1,11 @@
 import React from 'react'
-import logo from '../img/logo-amazon.png'
+import logo from '../img/logoamazonas.png'
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { BiSearchAlt2 } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom';
 import { NavBarStyled } from '../styles/navbar'
-import { logout } from '../actions/loginActions';
+import { logoutAsync } from '../actions/loginActions';
 
 const Navbar = () => {
 
@@ -13,7 +13,7 @@ const Navbar = () => {
     const navigate = useNavigate()
 
     const handleLogout = () => {
-        dispatch(logout())
+        dispatch(logoutAsync())
         navigate("/login")
         console.log('Logout')
     }
@@ -21,7 +21,8 @@ const Navbar = () => {
     return (
         <div>
             <NavBarStyled>
-                <Link to="/">
+                <Link to="/" className='linkLogo'>
+                    <h1>AMAZONAS</h1>
                     <img src={logo} alt='' />
                 </Link>
 
@@ -35,7 +36,7 @@ const Navbar = () => {
                 <ul>
                     <li><Link to="/add">Agregar Producto</Link></li>
                     <li><Link to="/edit">Editar Producto</Link></li>
-                    <li><Link to="/link" onClick={handleLogout}>Logout</Link>Logout</li>
+                    <li onClick={handleLogout}>Logout</li>
                 </ul>
             </NavBarStyled>
         </div>

@@ -1,6 +1,7 @@
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
+import { LoadingPage } from '../components/LoadingPage'
 import Login from '../components/Login'
 import Register from '../components/Register'
 import DashBoardRoutes from './DashBoardRoutes'
@@ -26,7 +27,7 @@ const App = () => {
 
   if (checking) {
     return (
-      <h1>Cargando...</h1>
+      <LoadingPage/>
     )
   }
 

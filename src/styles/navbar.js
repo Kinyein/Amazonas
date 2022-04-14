@@ -72,8 +72,15 @@ export const NavBarStyled = styled.nav`
         }
     }
 
+    a.linkLogo{
+        color: #fff;
+        font-size: 18px;
+        text-decoration: none;
+        text-align: center;
+        margin: 1%;
+    }
+
     img{
-        margin: 4%;
-        width: 160px;
+        width: 130px;
     }
 `

@@ -1,18 +1,17 @@
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
+import { BiCycling } from 'react-icons/bi'
 import { facebook, google } from '../firebase/firebaseConfig'
 import { typesLogin } from '../types/types'
+// import toastr from 'toastr'
 
 export const loginGoogle = () => {
     return (dispatch) => {
         const auth = getAuth()
         signInWithPopup(auth, google)
             .then(({ user }) => {
-                console.log(user, 'Usuario autorizado')
-                alert('Usuario autorizado')
             })
             .catch(error => {
                 console.log(error, 'No autorizado')
-                alert('No autorizado')
             })
     }
 }
@@ -20,7 +19,7 @@ export const loginGoogle = () => {
 export const loginFacebook = () => {
     const auth = getAuth()
     signInWithPopup(auth, facebook)
-        .then(({user}) => {
+        .then(({ user }) => {
             console.log(user)
             alert('Usuario autorizado')
         })
@@ -52,7 +51,18 @@ export const loginSinc = (email, password) => {
     }
 }
 
-export const logout = () => {
+export const logoutAsync = () => {
+    return (dispatch) => {
+        const auth = getAuth()
+        signOut(auth)
+            .then(({ user }) => {
+                dispatch(logoutSinc())
+            })
+            .catch(error => console.log(error))
+    }
+}
+
+export const logoutSinc = () => {
     return {
         type: typesLogin.logout
     }

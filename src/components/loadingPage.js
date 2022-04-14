@@ -1,11 +1,16 @@
-export const loadingPage = () => {
+import { ContainerLoadingPage, SpinnerLoading } from "../styles/loadingPageStyle"
+import logo from '../img/logoamazonas.png'
+
+export const LoadingPage = () => {
   return (
-    <div>
-        <div>
-            <h3>Amazonas</h3>
-            <img src="" />
-        </div>
-        <div class="spinner"></div>
-    </div>
+    <ContainerLoadingPage>
+      <div>
+        <h1>AMAZONAS</h1>
+        <img src={logo} alt='' />
+      </div>
+
+
+      <SpinnerLoading></SpinnerLoading>
+    </ContainerLoadingPage>
   )
 }
