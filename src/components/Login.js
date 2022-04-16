@@ -5,8 +5,8 @@ import { FcGoogle } from 'react-icons/fc'
 import { BsFacebook } from 'react-icons/bs'
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { ContainerLoginRegister, Error, LoginGoogleFace } from '../styles/loginRegisterStyle';
 import { loginEmailPassAsync, loginFacebook, loginGoogle } from '../actions/loginActions';
+import { ContainerForm, Error, LoginGoogleFace } from '../styles/formsStyle';
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string().email("Tiene que escribir un correo valido, @gmail, @hotmail, etc").min(10, "El correo es muy corto").max(50, "El correo es demasiado largo").required("El email es obligatorio"),
@@ -26,7 +26,7 @@ const Login = () => {
   }
 
   return (
-    <ContainerLoginRegister>
+    <ContainerForm>
 
       <h1>Login</h1>
 
@@ -68,7 +68,7 @@ const Login = () => {
 
       <p>¿Aun no tienes una cuenta? <Link to="/register">Registrarse</Link></p>
 
-    </ContainerLoginRegister>
+    </ContainerForm>
   )
 }
 

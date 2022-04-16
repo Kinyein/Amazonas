@@ -7,8 +7,12 @@ export const ContainerDetail = styled.div`
     flex-wrap: wrap;
     margin: 20px 20px;
 
-    img{
-        max-width: 100% ;
+    /* img{
+        max-width: 600px ;
+    } */
+
+    div{
+        max-width: 500px;
     }
 `
 export const Price = styled.p`
@@ -30,6 +34,7 @@ export const AddCartButton = styled.button`
     /* width: 100%; */
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     div{
         background-color: #565959;
@@ -51,6 +56,7 @@ export const BuyNowButton = styled.button`
     padding: 0 10px;
     display: flex;
     align-items: center;
+    cursor: not-allowed;
 
     div{
         background-color: #565959;

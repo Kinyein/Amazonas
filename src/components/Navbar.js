@@ -1,21 +1,42 @@
 import React from 'react'
 import logo from '../img/logoamazonas.png'
+import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { BiSearchAlt2 } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom';
 import { NavBarStyled } from '../styles/navbar'
 import { logoutAsync } from '../actions/loginActions';
+import { useState } from 'react';
+import { searchProductSinc } from '../actions/producstActions';
 
 const Navbar = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+    const [searchBar, setSearchBar] = useState({
+        currentSearch: ''
+    })
+
+    const {currentSearch} = searchBar
+
     const handleLogout = () => {
         dispatch(logoutAsync())
         navigate("/login")
         console.log('Logout')
+    }
+
+    const handleChange = ({target}) => {
+        setSearchBar({
+            [target.name]: target.value
+        })
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        dispatch(searchProductSinc(currentSearch))
+        // console.log(currentSearch)
     }
 
     return (
@@ -26,9 +47,12 @@ const Navbar = () => {
                     <img src={logo} alt='' />
                 </Link>
 
-                <form>
+                <form onSubmit={handleSubmit} autoComplete="off">
                     <input
                         type="text"
+                        name='currentSearch'
+                        onChange={handleChange}
+                        value={currentSearch}
                     />
                     <button><BiSearchAlt2 /></button>
                 </form>
@@ -37,6 +61,7 @@ const Navbar = () => {
                     <li><Link to="/add">Agregar Producto</Link></li>
                     <li><Link to="/edit">Editar Producto</Link></li>
                     <li onClick={handleLogout}>Logout</li>
+                    <li><AiOutlineShoppingCart className='iconCart'/></li>
                 </ul>
             </NavBarStyled>
         </div>

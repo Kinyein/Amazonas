@@ -3,7 +3,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { ContainerLoginRegister, Error } from '../styles/loginRegisterStyle';
+import { ContainerForm, Error } from '../styles/formsStyle';
 import { registerAsync } from '../actions/registerActions';
 
 
@@ -20,7 +20,7 @@ const Register = () => {
     const dispatch = useDispatch()
 
     return (
-        <ContainerLoginRegister>
+        <ContainerForm>
             <h1>Registrarse</h1>
             <Formik
                 initialValues={{
@@ -58,7 +58,7 @@ const Register = () => {
                 )}
             </Formik>
             <p>¿Ya tienes una cuenta? <Link to="/login">Inicia Sesión</Link></p>
-        </ContainerLoginRegister>
+        </ContainerForm>
     )
 };
 

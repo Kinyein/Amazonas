@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerLoginRegister = styled.div`
+export const ContainerForm = styled.div`
     text-align: center;
     margin: 20px;
 

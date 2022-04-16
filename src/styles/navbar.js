@@ -64,6 +64,10 @@ export const NavBarStyled = styled.nav`
             a:active{
                 color: grey;
             }
+
+            .iconCart{
+                font-size: 30px;
+            }
         }
 
         li:hover{
