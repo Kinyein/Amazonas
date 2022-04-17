@@ -1,10 +1,10 @@
 import Aos from 'aos'
 import 'aos/dist/aos.css';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoClose } from 'react-icons/io5'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { deleteProductAsync, getDetailProduct, listProductAsync } from '../actions/producstActions';
 import { CardProduct, CardsContainer } from '../styles/listStyle'
 import Swal from 'sweetalert2';
@@ -15,8 +15,6 @@ const ListProduct = () => {
   const navigate = useNavigate()
 
   const { products } = useSelector(store => store.products)
-
-  console.log(products)
 
   useEffect(() => {
     dispatch(listProductAsync())
@@ -45,30 +43,32 @@ const ListProduct = () => {
     navigate("/detail")
   }
 
+  
 
-  Aos.init();
+Aos.init();
 
-  return (
-    <CardsContainer>
-      {
-        products.map((p, index) => (
-          <div key={index} data-aos="fade-up">
-            <CardProduct onClick={() => sendDetailProduct(p)}>
+return (
+  <CardsContainer>
+    {
+      products.map((p, index) => (
+        <div key={index} data-aos="fade-up">
+          <CardProduct >
 
-              <button className='closeButton' onClick={() => deleteProduct(p.codigo)}><IoClose className='iconClose' /></button>
+            <button className='closeButton' onClick={() => deleteProduct(p.codigo)}><IoClose className='iconClose' /></button>
 
-              <img src={p.img} />
+            <img src={p.img} alt="" onClick={() => sendDetailProduct(p)} />
 
-              <div>
-                <h4>{p.nameProduct}</h4>
-                <p>&#36;{p.price}</p>
-              </div>
-            </CardProduct>
-          </div>
-        ))
-      }
-    </CardsContainer>
-  )
+            <div>
+              <h4 onClick={() => sendDetailProduct(p)}>{p.nameProduct}</h4>
+              <p>&#36;{p.price}</p>
+            </div>
+          </CardProduct>
+        </div>
+      ))
+    }
+
+  </CardsContainer>
+)
 }
 
 export default ListProduct

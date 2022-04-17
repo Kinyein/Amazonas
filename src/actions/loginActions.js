@@ -1,5 +1,4 @@
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
-import { BiCycling } from 'react-icons/bi'
 import { facebook, google } from '../firebase/firebaseConfig'
 import { typesLogin } from '../types/types'
 // import toastr from 'toastr'
@@ -18,13 +17,15 @@ export const loginGoogle = () => {
 
 export const loginFacebook = () => {
     const auth = getAuth()
+
     signInWithPopup(auth, facebook)
-        .then(({ user }) => {
-            console.log(user)
+        .then((resp, { user }) => {
+            console.log(resp)
             alert('Usuario autorizado')
         })
         .catch((error) => {
             console.log(error)
+            alert('Usuario no autorizado')
         })
 }
 

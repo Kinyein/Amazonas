@@ -1,5 +1,4 @@
-import { async } from "@firebase/util"
-import { addDoc, collection, deleteDoc, doc, getDocs, query, where } from "firebase/firestore"
+import { addDoc, collection, deleteDoc, doc, getDocs, query, updateDoc, where } from "firebase/firestore"
 import { dataBase } from "../firebase/firebaseConfig"
 import { typesProducts } from "../types/types"
 
@@ -16,6 +15,35 @@ export const addProductAsync = (product) => {
 export const addProductSinc = (product) => {
     return {
         type: typesProducts.addProduct,
+        payload: product
+    }
+}
+
+export const editProductAsync = (codigo, product) => {
+    console.log(codigo, product)
+    return async (dispatch) => {
+        const getCollection = collection(dataBase, "ProductsDB")
+        const q = query(getCollection, where("codigo", "==", codigo))
+        const getDataQ = await getDocs(q)
+        let id
+        getDataQ.forEach(async (document) => {
+            id = document.id
+        })
+        console.log(id)
+        const documentRef = doc(dataBase, "ProductsDB", id)
+        await updateDoc(documentRef, product)
+            .then(resp => {
+                dispatch(editProduct(product))
+                dispatch(listProductAsync())
+                console.log(resp)
+            })
+            .catch(error => console.log(error))
+    }
+}
+
+export const editProduct = (product) => {
+    return {
+        type: typesProducts.editProduct,
         payload: product
     }
 }
@@ -69,7 +97,7 @@ export const searchProductSinc = (search) => {
 }
 
 export const getDetailProduct = (detailArr) => {
-    return{ 
+    return {
         type: typesProducts.detailProduct,
         payload: detailArr
     }

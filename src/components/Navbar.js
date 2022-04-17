@@ -19,7 +19,7 @@ const Navbar = () => {
         currentSearch: ''
     })
 
-    const {currentSearch} = searchBar
+    const { currentSearch } = searchBar
 
     const handleLogout = () => {
         dispatch(logoutAsync())
@@ -27,7 +27,7 @@ const Navbar = () => {
         console.log('Logout')
     }
 
-    const handleChange = ({target}) => {
+    const handleChange = ({ target }) => {
         setSearchBar({
             [target.name]: target.value
         })
@@ -58,12 +58,13 @@ const Navbar = () => {
                 </form>
 
                 <ul>
+                    <li><Link to="/">Inicio</Link></li>
                     <li><Link to="/add">Agregar Producto</Link></li>
-                    <li><Link to="/edit">Editar Producto</Link></li>
                     <li onClick={handleLogout}>Logout</li>
-                    <li><AiOutlineShoppingCart className='iconCart'/></li>
+                    <li><Link to="/cart"><AiOutlineShoppingCart className='iconCart' /></Link> </li>
                 </ul>
             </NavBarStyled>
+
         </div>
     )
 }

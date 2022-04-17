@@ -1,7 +1,7 @@
 export const getLocalStorage = () => {
     const detailProductStorage = localStorage.getItem('detailProduct')
 
-    if (detailProductStorage === null) {
+    if (detailProductStorage === undefined || detailProductStorage === null) {
         return localStorage.setItem('detailProduct', [])
     }
 

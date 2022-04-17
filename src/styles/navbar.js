@@ -9,7 +9,7 @@ export const NavBarStyled = styled.nav`
     flex-wrap: wrap;
     width: 100%;
 
-    @media screen and (max-width: 570px){
+    @media screen and (max-width: 950px){
         justify-content: center;
     }
 
@@ -18,7 +18,7 @@ export const NavBarStyled = styled.nav`
         align-items: center;
         justify-content: center;
         height: 30px;
-        width: 50%;
+        width: 40%;
         margin: 20px;
 
         input{
@@ -40,6 +40,10 @@ export const NavBarStyled = styled.nav`
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        @media screen and (max-width: 950px){
+            width: 100%;
         }
     }
 
@@ -84,7 +88,11 @@ export const NavBarStyled = styled.nav`
         margin: 1%;
     }
 
+    h1{
+        font-size: 25px;
+    }
+
     img{
-        width: 130px;
+        width: 100px;
     }
 `

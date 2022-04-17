@@ -70,6 +70,28 @@ export const BuyNowButton = styled.button`
         justify-content: center;
     }
 `
+export const EditButton = styled.button`
+    background-color: #EA9D49;
+    border: none;
+    border-radius: 4px;
+    margin: 8px;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    cursor: not-allowed;
+
+    div{
+        background-color: #565959;
+        padding: 4px;
+        border-radius: 4px;
+        margin: 4px 8px;
+        color: #fff;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+`
 export const ReturnButton = styled.button`
     margin: 20px;
     border: none;

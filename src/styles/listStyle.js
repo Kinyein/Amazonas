@@ -28,7 +28,12 @@ export const CardProduct = styled.div`
     div{
         margin: 10px 2px;
 
+        h4{
+            font-size: 18px;
+        }
+
         p{
+            font-size: 18px;
             color: #AF2913;
         }
     }

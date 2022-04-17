@@ -1,5 +1,6 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import thunk from "redux-thunk";
+import { cartReducer } from "../reducers/cartReducer";
 import { loginReducers } from "../reducers/loginReducer";
 import { productsReducer } from "../reducers/productsReducer";
 import { registerReducers } from "../reducers/registerReducers";
@@ -14,12 +15,13 @@ console.log(storageState)
 const reducers = combineReducers({
     login: loginReducers,
     register: registerReducers,
-    products: productsReducer
+    products: productsReducer,
+    cart: cartReducer
 })
 
 export const store = createStore(
     reducers,
-    storageState,
+    // storageState,
     composeEnhancers(
         applyMiddleware(thunk)
     )
