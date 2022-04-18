@@ -12,6 +12,7 @@ import { AddCartButton, BuyNowButton, ContainerButtons, ContainerDetail, EditBut
 import EditProduct from './EditProduct'
 import Swal from 'sweetalert2'
 import ReactSlick from 'react-slick'
+import SliderImg from './SliderImg'
 
 const DetailProduct = () => {
 
@@ -89,34 +90,8 @@ const DetailProduct = () => {
 
             <ReturnButton onClick={backToHome}>&#60; Volver a los resultados</ReturnButton>
 
+
             <ContainerDetail>
-
-                {/* <ReactSlick
-                    {...{
-                        // dots: true,
-                        infinite: true,
-                        // speed: 500,
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }}
-                >
-                    <ReactImageMagnify
-                        {...{
-                            smallImage: {
-                                alt: 'Wristwatch by Versace',
-                                isFluidWidth: true,
-                                src: img,
-                                sizes: '(max-width: 480px) 100vw, (max-width: 1200px) 30vw, 360px'
-                            },
-                            largeImage: {
-                                src: img,
-                                width: 1200,
-                                height: 1000
-                            },
-                        }}
-                    />
-
-                </ReactSlick> */}
 
                 {/* <Carousel>---------Easy carousel with react-elastic-carousel-----------
                     <ReactImageMagnify {...{
@@ -145,64 +120,8 @@ const DetailProduct = () => {
                     }} />
                 </Carousel> */}
 
-                <Carousel>
-                    <Carousel.Item>
-                        <ReactImageMagnify {...{
-                            smallImage: {
-                                alt: 'nameProduct',
-                                isFluidWidth: true,
-                                src: img
-                            },
-                            largeImage: {
-                                src: img,
-                                width: 1200,
-                                height: 1000
-                            }
-                        }} />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <ReactImageMagnify {...{
-                            smallImage: {
-                                alt: 'nameProduct',
-                                isFluidWidth: true,
-                                src: img2
-                            },
-                            largeImage: {
-                                src: img2,
-                                width: 1200,
-                                height: 1000
-                            }
-                        }} />
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        <ReactImageMagnify {...{
-                            smallImage: {
-                                alt: 'nameProduct',
-                                isFluidWidth: true,
-                                src: img3
-                            },
-                            largeImage: {
-                                src: img3,
-                                width: 1200,
-                                height: 1000
-                            }
-                        }} />
-                    </Carousel.Item>
 
-                </Carousel>
-
-                {/* <ReactImageMagnify {...{
-                    smallImage: {
-                        alt: 'nameProduct',
-                        isFluidWidth: true,
-                        src: img
-                    },
-                    largeImage: {
-                        src: img,
-                        width: 1200,
-                        height: 1000
-                    }
-                }} /> */}
+                <SliderImg imgData={[img, img2, img3]} />
 
                 <div>
                     <h4>{nameProduct}</h4>
