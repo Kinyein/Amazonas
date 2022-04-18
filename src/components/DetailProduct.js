@@ -10,6 +10,8 @@ import { addToCartAction } from '../actions/cartActions'
 // import Carousel from 'react-elastic-carousel';
 import { AddCartButton, BuyNowButton, ContainerButtons, ContainerDetail, EditButton, Price, ReturnButton } from '../styles/detailStyle'
 import EditProduct from './EditProduct'
+import Swal from 'sweetalert2'
+import ReactSlick from 'react-slick'
 
 const DetailProduct = () => {
 
@@ -17,8 +19,11 @@ const DetailProduct = () => {
 
     const dispatch = useDispatch()
 
+
     const [toEdit, setToEdit] = useState(false)
     const [sendToEdit, setSendToEdit] = useState([])
+
+    const [imgProduct, setImgProduct] = useState([])
 
     const storageState = useSelector(store => store)
 
@@ -34,24 +39,32 @@ const DetailProduct = () => {
         navigate("/")
     }
 
+
     const cartLocalStorage = JSON.parse(localStorage.getItem('cart'))
     const cart = []
 
+
     const addToCart = () => {
 
-        cart.unshift({ nameProduct, description, price, img, img2, img3 });
+        cart.unshift(detailProduct[0]);
 
         dispatch(addToCartAction(cart))
 
         if (cartLocalStorage !== null) {
-            cartLocalStorage.unshift({ nameProduct, description, price, img, img2, img3 })
+            cartLocalStorage.unshift(detailProduct[0])
             localStorage.setItem('cart', JSON.stringify(cartLocalStorage));
 
         } else {
-            cart.unshift({ nameProduct, description, price, img, img2, img3 });
+            cart.unshift(detailProduct[0]);
             localStorage.setItem('cart', JSON.stringify(cart));
         }
 
+        Swal.fire({
+            icon: 'success',
+            title: 'Agregado al carrito',
+            showConfirmButton: false,
+            timer: 1200
+        })
         console.log(cart)
     }
 
@@ -77,6 +90,33 @@ const DetailProduct = () => {
             <ReturnButton onClick={backToHome}>&#60; Volver a los resultados</ReturnButton>
 
             <ContainerDetail>
+
+                {/* <ReactSlick
+                    {...{
+                        // dots: true,
+                        infinite: true,
+                        // speed: 500,
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }}
+                >
+                    <ReactImageMagnify
+                        {...{
+                            smallImage: {
+                                alt: 'Wristwatch by Versace',
+                                isFluidWidth: true,
+                                src: img,
+                                sizes: '(max-width: 480px) 100vw, (max-width: 1200px) 30vw, 360px'
+                            },
+                            largeImage: {
+                                src: img,
+                                width: 1200,
+                                height: 1000
+                            },
+                        }}
+                    />
+
+                </ReactSlick> */}
 
                 {/* <Carousel>---------Easy carousel with react-elastic-carousel-----------
                     <ReactImageMagnify {...{
@@ -201,7 +241,7 @@ const DetailProduct = () => {
                     toEdit === true ? <EditProduct toEdit={sendToEdit} /> : ''
                 }
             </ContainerDetail>
-        </div>
+        </div >
     )
 }
 

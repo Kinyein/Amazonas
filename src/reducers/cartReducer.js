@@ -10,6 +10,10 @@ export const cartReducer = (state = initialState, action) => {
             return{
                 cart: action.payload
             }
+        case typesCart.deleteItemCart:
+            return{
+                cart: action.payload
+            }
             
         default:
             return state
